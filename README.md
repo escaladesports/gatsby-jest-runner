@@ -5,45 +5,57 @@ A working example of Gatsby + Jest
 ## Install packages
 
 ```bash
-yarn add babel-jest react-test-renderer identity-obj-proxy 'babel-core@^7.0.0-0' @babel/core @babel/preset-env @babel/preset-react @babel/plugin-proposal-class-properties @babel/plugin-proposal-optional-chaining --dev
+yarn add jest react-test-renderer identity-obj-proxy enzyme enzyme-adapter-react-16 --dev
 ```
 
 ## Required Files, Folders, and Configurations
 
 - `__mocks__/fileMock.js`
+- `__mocks__/gatsby.js`
+- `__mocks__/gatsby-link.js`
 - `__tests__/.gitkeep`
-- `jest-preprocess.js`
+- `setupTests.js`
 - `loadershim.js`
 
 ### In your `pacakge.json` file
 
 ```json
-"jest": {
-	"transform": {
-		"^.+\\.jsx?$": "<rootDir>/jest-preprocess.js"
-	},
-	"testRegex": "/.*(__tests__\\/.*)|(.*(test|spec))\\.jsx?$",
-	"moduleNameMapper": {
-		".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy",
-		".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
-	},
-	"testPathIgnorePatterns": [
-		"node_modules", ".cache", "__snapshots__"
-	],
-	"transformIgnorePatterns": [
-		"node_modules/(?!(gatsby)/)"
-	],
-	"globals": {
-		"__PATH_PREFIX__": ""
-	},
-	"testURL": "http://localhost",
-	"setupFiles": [
-		"<rootDir>/loadershim.js"
-	]
-},
-"scripts": {
-	"test": "jest",
-},
+  "jest": {
+    "testRegex": "/.*(__tests__\\/.*)|(.*(test|spec))\\.jsx?$",
+    "moduleNameMapper": {
+      ".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy",
+      ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>/setupTests.js",
+    "testPathIgnorePatterns": [
+      "node_modules",
+      ".cache",
+      "__snapshots__",
+      "public",
+      "dist"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(gatsby)/)"
+    ],
+    "globals": {
+      "__PATH_PREFIX__": ""
+    },
+    "testURL": "http://localhost",
+    "setupFiles": [
+      "<rootDir>/loadershim.js"
+    ]
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "presets": [
+          "es2015",
+          "react",
+          "stage-0"
+        ]
+      }
+    }
+  },
 ```
 
 ## Usage

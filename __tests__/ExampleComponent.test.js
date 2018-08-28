@@ -1,12 +1,10 @@
 import React from "react"
-import renderer from "react-test-renderer"
+import { shallow } from 'enzyme'
 
 import Example from "../src/module"
 
-describe(`Example`, () =>
+describe(`Header`, () =>
 	it(`renders correctly`, () => {
-		const container = renderer.create(<Example />)
-		const tree = container.toJSON()
-		expect(tree).toMatchSnapshot()
+		expect(shallow(<Example />).text()).toEqual(`Example Component`)		
 	})
 )
