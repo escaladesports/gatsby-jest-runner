@@ -23,6 +23,15 @@ coverage/
 .babelrc
 src
 .travis.yml
+README.md
+.eslintignore
+.eslintrc
+.nvmrc
+gatsby-config.js
+plugins/
+utils/
+__tests__
+__mocks__
 
 # Temporary
 temp
