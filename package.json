@@ -46,7 +46,8 @@
     "testURL": "http://localhost",
     "setupFiles": [
       "<rootDir>/loadershim.js"
-    ]
+    ],
+    "coverageDirectory": "<rootDir>/public/coverage"
   },
   "babel": {
     "env": {

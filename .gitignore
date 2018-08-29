@@ -27,6 +27,7 @@ _optimize
 ./gatsby-browser.js
 ./gatsby-ssr.js
 _book
+coverage
 
 # Temporary
 temp

@@ -43,7 +43,8 @@ yarn add jest react-test-renderer identity-obj-proxy enzyme enzyme-adapter-react
     "testURL": "http://localhost",
     "setupFiles": [
       "<rootDir>/loadershim.js"
-    ]
+    ],
+    "coverageDirectory": "<rootDir>/public/coverage"
   },
   "babel": {
     "env": {
@@ -61,3 +62,8 @@ yarn add jest react-test-renderer identity-obj-proxy enzyme enzyme-adapter-react
 ## Usage
 
 - `yarn test`
+- `yarn test --coverage`
+
+### View coverage report
+
+`http://localhost:8000/coverage/lcov-report/index.html`
